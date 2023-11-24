@@ -1,4 +1,5 @@
 import { Balance } from "./components/Balance"
+import { Chart } from "./components/Chart"
 import { Header } from "./components/Header"
 import { IncomeExpenses } from "./components/IncomeExpenses"
 import { TransactionForm } from "./components/transactions/TransactionForm"
@@ -18,6 +19,7 @@ function App() {
       < Balance />
       < TransactionForm />
       < TransactionList />
+      < Chart />
 
     </GlobalProvider>
   )
