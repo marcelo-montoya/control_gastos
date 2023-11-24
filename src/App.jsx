@@ -1,10 +1,8 @@
-import { Balance } from "./components/Balance"
-import { Chart } from "./components/Chart"
-import { Header } from "./components/Header"
-import { IncomeExpenses } from "./components/IncomeExpenses"
-import { TransactionForm } from "./components/transactions/TransactionForm"
-import { TransactionList } from "./components/transactions/TransactionList"
 import { GlobalProvider } from "./context/GlobalState"
+
+import { Balance, Chart, Header, IncomeExpenses } from "./components"
+import { TransactionForm, TransactionList } from "./components/transactions"
+
 
 
 

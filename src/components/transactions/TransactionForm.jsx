@@ -2,9 +2,6 @@ import { useState } from "react"
 import { useGlobalState } from "../../hooks/useGlobalState"
 
 
-
-
-
 export const TransactionForm = () => {
 
   const { addTransaction } = useGlobalState()

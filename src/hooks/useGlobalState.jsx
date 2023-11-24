@@ -10,8 +10,4 @@ export const useGlobalState = () => {
     const context = useContext(Context)
     return context
 
-//   return (
-//     <div>useGlobalState</div>
-//   )
-
 }
