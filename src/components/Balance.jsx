@@ -1,26 +1,23 @@
-
-
-import { useGlobalState } from "../hooks/useGlobalState"
-
-
-
+import { useCalculate } from "../hooks/useCalculate"
 
 export const Balance = () => {
 
-    const { transactions } = useGlobalState()
-
-    
-
-    const amounts = transactions.map( transaction => transaction.amount )
-    const total = amounts.reduce( ( acc, item ) => ( acc += item ), 0 )
+    const { total } = useCalculate()
 
     return (
-        <div>
-            <h3>Tu balance</h3>
-            <h1> $ { total } </h1>
+        <div className="balance">
+            <h3>Saldo</h3>
+            {
+                total < 0 ? (
+                    <div>
+                        <h1 style={{ color: 'red' }} > $ {total} </h1>
+                        <strong style={{ color: 'red' }}> Tu saldo es negativo 😥 </strong>
+                    </div>
+                ) : (
+                    <h1> $ {total} </h1>
+                )
+            }
 
         </div>
-
     )
-
 }

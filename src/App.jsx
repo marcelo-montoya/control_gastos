@@ -19,13 +19,13 @@ function App() {
     
 
     <GlobalProvider>
-      < Header />
+      {/* < Header /> */}
       <Container>
         <Row >
           <Col> < TransactionForm /> </Col>
           <Col> < Chart /> </Col>
         </Row>
-        <Row>
+        <Row className="cifras">
           <Col> < Balance /> </Col>
           <Col> < IncomeExpenses /> </Col>
           <Col> < TransactionList /> </Col>

@@ -1,48 +1,56 @@
 import { VictoryPie, VictoryLabel } from "victory";
-import { useGlobalState } from "../hooks/useGlobalState";
-
+import { useCalculate } from "../hooks/useCalculate";
 
 export const Chart = () => {
-    
-    const { transactions } = useGlobalState()
 
-    // const total = transactions.reduce(( acc, transaction ) => ( acc += transaction.amount ), 0)
-
-    const totalIngreso = transactions.filter( transaction => transaction.amount > 0 ).reduce(( acc, transaction ) => ( acc += transaction.amount ), 0)
-    
-    const totalGasto = transactions.filter( transaction => transaction.amount < 0 ).reduce(( acc, transaction ) => ( acc += transaction.amount ), 0) * - 1
-
-    
-    // const porcentajeGastos = Math.round((totalGasto / totalIngreso) * 100)
-
-
+    const { ingreso, gasto } = useCalculate();
 
     return (
-
-        <div>
-
-            <VictoryPie
-            
-            colorScale={["tomato", "navy" ]}
-                data={[
-                    { x: "Gastos", y: totalGasto },
-                    { x: "Ingresos", y: totalIngreso }
-                ]}
-                animate = {{
-                    duration: 2000,
-                }}
-                labelComponent={
-                    < VictoryLabel
-                        angle={45}
-                        style={{
-                            fill: "black",
-                            fontSize: 5
-                        }}
+        <div className="chart">
+            {ingreso !== 0 || gasto !== 0 ? (
+                <VictoryPie
+                    colorScale={["navy", "tomato"]}
+                    data={[
+                        ...(ingreso !== 0 ? [{ x: "Ingreso", y: ingreso }] : []),
+                        ...(gasto !== 0 ? [{ x: "Gastos", y: gasto }] : [])
+                    ]}
+                    animate={{
+                        duration: 2000,
+                    }}
+                    labelComponent={
+                        <VictoryLabel
+                            angle={45}
+                            style={{
+                                fill: "black",
+                                fontSize: 15
+                            }}
+                        />
+                    }
+                    height={250}
+                />
+            ) : (
+                <div className="blackchart">
+                    <VictoryPie
+                        colorScale={["black", "gray"]}
+                        data={[
+                            { x: "Gastos", y: 1 },
+                            { x: "Ingresos", y: 1 }
+                        ]}
+                        labelComponent={
+                            <VictoryLabel
+                                angle={45}
+                                style={{
+                                    fill: "black",
+                                    fontSize: 15
+                                }}
+                            />
+                        }
+                        height={250}
                     />
-                }
-                height={150}
-                
-            />
+                    <p>No hay datos</p>
+                </div>
+
+            )}
         </div>
-    )
-}
+    );
+};

@@ -1,28 +1,16 @@
-import { Button, ListGroup, ListGroupItem } from "react-bootstrap"
+import { Button, ListGroup } from "react-bootstrap"
 import { useGlobalState } from "../../hooks/useGlobalState"
-
-
-
-
 
 
 export const TransactionList = () => {
 
     const { transactions, deleteTransaction } = useGlobalState()
 
-
-
-
   return (
-    <div>
+    <div className="transaction-list" >
         <h3>Historial</h3>
-
-        
-
         {
-            // transactions.map( transaction => (
-
-                <ListGroup>
+          <ListGroup style={{ maxHeight: '200px', overflowY: 'auto' }}>                  
                 {transactions.map((transaction) => (
                   <ListGroup.Item key={transaction.id} className="d-flex justify-content-between align-items-center">
                     <span>{transaction.description}</span>
@@ -38,44 +26,6 @@ export const TransactionList = () => {
                   </ListGroup.Item>
                 ))}
               </ListGroup>
-
-
-            //     <Table striped>
-            //     <thead>
-            //       <tr>
-            //         <th> Descripcion </th>
-            //         <th> Monto </th>
-            //         <th></th>
-            //       </tr>
-            //     </thead>
-            //     <tbody >
-            //       <tr key={ transaction.id }>
-            //         <td> { transaction.description } </td>
-            //         <td> $ { transaction.amount } </td>
-            //         <td> <Button 
-            //         variant="danger"
-            //         onClick={ () => {
-            //             deleteTransaction( transaction.id )
-            //         } } >
-            //             Borrar
-            //         </Button> </td>
-            //       </tr>
-            //     </tbody>
-            //   </Table>
-
-                
-                // <div key={ transaction.id } >
-                //     <p> { transaction.description } </p>
-                //     <span> $ { transaction.amount } </span>
-                //     <Button 
-                //     variant="danger"
-                //     onClick={ () => {
-                //         deleteTransaction( transaction.id )
-                //     } } >
-                //         Borrar
-                //     </Button>
-                // </div>
-            // ) )
         }
     </div>
   )
